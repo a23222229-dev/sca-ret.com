@@ -49,9 +49,9 @@ export const NAV: { label: string; href: string }[] = [
   { label: "聯絡我們", href: "/contact/" },
 ];
 
-// 三種退休模組（名稱取自 login.php 頁面下方的 3 個橙色六角形徽章）
-// TODO：確認是否正確對應排除中的 startup2.php／retire.php 實際表單內容，
-// 這兩頁本階段排除、暫不遷移，只在此列出名稱供頁面文案引用。
+// 三種退休模組（名稱取自 login.php 頁面下方的 3 個磚紅色六角形徽章）
+// 已確認：不需要對應到 startup2.php／retire.php 的實際表單內容，維持空連結／
+// placeholder 即可（login.php 整頁本來就是尚未接上真實流程的展示頁）。
 export const RETIREMENT_MODULES: { name: string }[] = [
   { name: "退休不動產管理信託" },
   { name: "資產指定收益交付" },
