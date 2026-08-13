@@ -37,13 +37,15 @@ export const PARTNERS: { name: string; url?: string }[] = [
   { name: "Zi-Dun 資訊維護網頁設計" }, // TODO：官網網址未知
 ];
 
-// 主導覽選單（6 項已從截圖確認名稱與順序；部分網址待確認，見 scaretimportplan.md 第 7 節）
+// 主導覽選單（6 項已從截圖確認名稱、順序與對應網址）
 export const NAV: { label: string; href: string }[] = [
   { label: "關於SCA", href: "/about/" },
   { label: "啟動退休人生", href: "/program/" },
   { label: "收費方案", href: "/pricing/" },
-  { label: "合作方案", href: "/TODO-partnership/" }, // TODO：sitemap 找不到對應 URL，需截圖確認
-  { label: "會員專區", href: "/login/" }, // TODO：推測對應 login.php，需確認
+  // 合作方案對應 retire.php（意定監護「曼陀羅計畫」頁），本階段排除於靜態站範圍外
+  // （真實表單邏輯，需另立後端），故無對應 Astro 頁面，先保留導覽項目但連結待補
+  { label: "合作方案", href: "/TODO-retire-backend/" }, // TODO：retire.php 尚未建置，需後端規劃完成後才有正式頁面
+  { label: "會員專區", href: "/login/" },
   { label: "聯絡我們", href: "/contact/" },
 ];
 
