@@ -28,11 +28,13 @@ export const LINE_URL = ""; // TODO
 // 逐字取自 sca-ret.com 現站頁尾，遷移時不要「修正」成中文慣用格式
 export const COPYRIGHT = "COPYRIGHTS 2023 詠業商略顧問有限公司LTD. ALL RIGHTS RESERVED";
 
-// 夥伴品牌（見 startup.php 頁尾三個 logo）
+// 夥伴品牌（見 startup.php 頁尾三個 logo；名稱已對照使用者提供的 logo 圖檔校正）
+// 各品牌識別色（供 Phase 3 設計參考，取自 logo 圖檔）：
+// CREDO 是青綠色圓形 C 字標；富盟物業是橘紅色幾何圖標；Zi-Dun 是紫色盾牌圖標＋紫色文字。
 export const PARTNERS: { name: string; url?: string }[] = [
   { name: "CREDO 詠業商略·科技法顧", url: CREDO_URL },
-  { name: "台富盟物業 FULLMAN PROPERTIES CORP" }, // TODO：官網網址未知
-  { name: "Zi-Dun 資訊維護資訊設計" }, // TODO：官網網址未知
+  { name: "富盟物業 FULLMAN PROPERTIES CORP" }, // TODO：官網網址未知
+  { name: "Zi-Dun 資訊維護網頁設計" }, // TODO：官網網址未知
 ];
 
 // 主導覽選單（6 項已從截圖確認名稱與順序；部分網址待確認，見 scaretimportplan.md 第 7 節）
