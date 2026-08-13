@@ -10,7 +10,7 @@
 // 公司基本資料，屆時再抽成共用套件（見 scaretimportplan.md 第 7 節待確認事項）。
 
 export const SITE_NAME = "詠業商略顧問有限公司"; // 與 credo.com.tw 一致，出自 sca-ret 頁尾著作權標示
-export const SITE_BRAND = "Sca Ret."; // 站上 Logo 文字（含拼圖吉祥物圖標）
+export const SITE_BRAND = "Sca Ret."; // 純文字商標「Sca Ⓡet.」，橘色系粗體圓角字體，圓圈框住 R 是造字設計、無吉祥物插畫（已用實際 logo 圖檔核對）
 export const SITE_TAGLINE = "台灣首家意定監護暨遺囑系統"; // 取自 startup.php 主標
 
 // TODO：確認法人關係——connection.php 頁面標示公司名「SCA退休機制LTD.」
