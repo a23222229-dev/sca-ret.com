@@ -1,0 +1,61 @@
+/* sca-ret.com 設計 token（單一真實來源）— 草稿 v0.1
+ * 規範同 credo.com.tw：顏色一律在此定義（oklch 為準、hex 為 fallback），
+ * 元件只用 var(--…)；字級一律 --text-* 階梯（最小 18px）；禁 px 硬編、禁 !important。
+ *
+ * 【TODO】以下 hex 是從使用者提供的頁面截圖目測估計，不是用色彩滴管精確取樣。
+ * 正式套用前務必用原始設計檔或高解析度截圖重新取色核對，尤其橙色主色調。
+ */
+:root {
+  /* 品牌與背景 */
+  --brand: #e39321;        /* 橙色主色（Logo／橫幅／按鈕），估計值待核對 */
+  --brand-deep: #a5610a;   /* 深橙：淺底上的橙色文字/連結（AA 對比），估計值待核對 */
+  --brand-mid: #eaa74a;    /* 淺橙 */
+  --brand-light: #f5cf9c;  /* 更淺橙（徽章邊框類） */
+  --paper: #f1efe3;        /* 暖米白底（首頁/關於頁背景），估計值待核對 */
+  --surface: #ffffff;      /* 卡片白 */
+  /* 文字 */
+  --ink: #262320;          /* 主文字（暖近黑） */
+  --ink-soft: #5c564e;     /* 次要文字 */
+  --on-brand: #ffffff;     /* 橙底上的白字（按鈕/橫幅標題） */
+  --on-dark: #ded9d2;      /* 深底上的淺字（頁尾黑底） */
+  /* 邊線與遮罩 */
+  --line: #d8d2c6;
+  --footer-bg: #1a1a1a;    /* 頁尾深色底，估計值待核對 */
+
+  /* 字級量表（最小 18px；--text-base 為內文下限，沿用 credo.com.tw 階梯） */
+  --text-xs: 1.125rem;   /* 18px */
+  --text-sm: 1.25rem;    /* 20px */
+  --text-base: 1.375rem; /* 22px（內文） */
+  --text-lg: 1.625rem;   /* 26px */
+  --text-xl: 2rem;       /* 32px */
+  --text-2xl: clamp(2rem, 1.5rem + 2vw, 2.75rem);
+  --text-3xl: clamp(2.25rem, 1.6rem + 2.8vw, 3.25rem);
+
+  /* 字型與其他 */
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Roboto,
+    -apple-system, BlinkMacSystemFont, sans-serif;
+  --leading: 1.75;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 18px rgba(60, 52, 40, 0.12);
+  --container: 1140px;
+}
+
+@supports (color: oklch(0.5 0.1 250)) {
+  :root {
+    --brand: oklch(0.72 0.15 55);
+    --brand-deep: oklch(0.48 0.12 50);
+    --brand-mid: oklch(0.79 0.11 60);
+    --brand-light: oklch(0.87 0.08 65);
+    --paper: oklch(0.955 0.008 80);
+    --surface: oklch(1 0 0);
+    --ink: oklch(0.18 0.01 80);
+    --ink-soft: oklch(0.42 0.012 80);
+    --on-brand: oklch(1 0 0);
+    --on-dark: oklch(0.85 0.01 80);
+    --line: oklch(0.87 0.02 80);
+    --footer-bg: oklch(0.15 0 0);
+    --shadow: 0 4px 18px oklch(0.3 0.02 80 / 0.12);
+  }
+}
