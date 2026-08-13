@@ -6,8 +6,8 @@
 // 【重要背景】sca-ret.com 與 credo.com.tw 是同一家公司（詠業商略顧問有限公司）
 // 旗下的兩個獨立站台：credo.com.tw 是法律顧問品牌站，sca-ret.com 是退休安心
 // 服務品牌站。credo.com.tw 的 site.ts 已有 SCA_URL 常數對外連到 sca-ret.com，
-// 這裡對稱地加回 CREDO_URL。兩站目前各自維護一份 site.ts；若之後決定共用同一份
-// 公司基本資料，屆時再抽成共用套件（見 scaretimportplan.md 第 7 節待確認事項）。
+// 這裡對稱地加回 CREDO_URL。已定案：兩站商家資訊各自獨立維護，不共用同一份
+// 資料，只在頁尾互相標註夥伴關係（見 scaretimportplan-draft.md 第 7 節第 1 項）。
 
 export const SITE_NAME = "詠業商略顧問有限公司"; // 與 credo.com.tw 一致，出自 sca-ret 頁尾著作權標示
 export const SITE_BRAND = "Sca Ret."; // 純文字商標「Sca Ⓡet.」，橘色系粗體圓角字體，圓圈框住 R 是造字設計、無吉祥物插畫（已用實際 logo 圖檔核對）
