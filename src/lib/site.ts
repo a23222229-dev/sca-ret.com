@@ -11,7 +11,7 @@
 
 export const SITE_NAME = "詠業商略顧問有限公司"; // 與 credo.com.tw 一致，出自 sca-ret 頁尾著作權標示
 export const SITE_BRAND = "Sca Ret."; // 純文字商標「Sca Ⓡet.」，橘色系粗體圓角字體，圓圈框住 R 是造字設計、無吉祥物插畫（已用實際 logo 圖檔核對）
-export const SITE_TAGLINE = "台灣首家意定監護暨遺囑系統"; // 取自 startup.php 主標
+export const SITE_TAGLINE = "台灣首家意定監護暨遺囑系統"; // 取自首頁主標（先前誤記為 startup.php 的內容，startup.php 其實整頁是表單，已排除）
 
 // TODO：確認法人關係——connection.php 頁面標示公司名「SCA退休機制LTD.」
 // 統編 94062801，與頁尾著作權標示的「詠業商略顧問有限公司」不是同一個名稱，
@@ -28,7 +28,7 @@ export const LINE_URL = ""; // TODO
 // 逐字取自 sca-ret.com 現站頁尾，遷移時不要「修正」成中文慣用格式
 export const COPYRIGHT = "COPYRIGHTS 2023 詠業商略顧問有限公司LTD. ALL RIGHTS RESERVED";
 
-// 夥伴品牌（見 startup.php 頁尾三個 logo；名稱已對照使用者提供的 logo 圖檔校正）
+// 夥伴品牌（見首頁頁尾三個 logo；名稱已對照使用者提供的 logo 圖檔校正）
 // 各品牌識別色（供 Phase 3 設計參考，取自 logo 圖檔）：
 // CREDO 是青綠色圓形 C 字標；富盟物業是橘紅色幾何圖標；Zi-Dun 是紫色盾牌圖標＋紫色文字。
 export const PARTNERS: { name: string; url?: string }[] = [
@@ -40,11 +40,13 @@ export const PARTNERS: { name: string; url?: string }[] = [
 // 主導覽選單（6 項已從截圖確認名稱、順序與對應網址）
 export const NAV: { label: string; href: string }[] = [
   { label: "關於SCA", href: "/about/" },
-  { label: "啟動退休人生", href: "/program/" },
+  // 啟動退休人生對應 startup.php，已確認整頁是委任模組挑選表單（已串接外部
+  // 資料庫），本階段排除於靜態站範圍外，故無對應 Astro 頁面。
+  // TODO：這個導覽項目要連去哪裡待決定（導向首頁／連到舊站真實表單／先隱藏），
+  // 見 scaretimportplan-draft.md 第 7 節第 0 項。
+  { label: "啟動退休人生", href: "/TODO-startup-backend/" },
   { label: "收費方案", href: "/pricing/" },
-  // 合作方案對應 retire.php（意定監護「曼陀羅計畫」頁），本階段排除於靜態站範圍外
-  // （真實表單邏輯，需另立後端），故無對應 Astro 頁面，先保留導覽項目但連結待補
-  { label: "合作方案", href: "/TODO-retire-backend/" }, // TODO：retire.php 尚未建置，需後端規劃完成後才有正式頁面
+  { label: "合作方案", href: "/partnership/" }, // 對應 retire.php（意定監護「曼陀羅計畫」），已確認是靜態頁
   { label: "會員專區", href: "/login/" },
   { label: "聯絡我們", href: "/contact/" },
 ];
