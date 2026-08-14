@@ -42,10 +42,10 @@ export const NAV: { label: string; href: string }[] = [
   { label: "關於SCA", href: "/about/" },
   // 啟動退休人生對應 startup.php，已用原始碼確認整頁是委任契約簽署表單
   // （意定監護／安養信託／自書遺囑，串接外部服務 Ragic），本階段排除於
-  // 靜態站範圍外，故無對應 Astro 頁面。
-  // TODO：這個導覽項目要連去哪裡待決定（導向首頁／連到舊站真實表單／先隱藏），
-  // 見 scaretimportplan-draft.md 第 7 節第 0 項。
-  { label: "啟動退休人生", href: "/TODO-startup-backend/" },
+  // 靜態站範圍外，故無對應 Astro 頁面。使用者已決定：直接連到舊站現有
+  // 的 /startup.php（外部連結），等後端整合完成、新站有自己的頁面後
+  // 再改回站內連結。
+  { label: "啟動退休人生", href: "https://sca-ret.com/startup.php" },
   { label: "收費方案", href: "/pricing/" },
   { label: "合作方案", href: "/partnership/" }, // 對應 retire.php（意定監護「曼陀羅計畫」），已確認是靜態頁
   { label: "會員專區", href: "/login/" },
@@ -61,7 +61,12 @@ export const RETIREMENT_MODULES: { name: string }[] = [
   { name: "意定監護及防詐機制" },
 ];
 
-// 認證徽章（about.php 頁尾 6 項；圖檔本身需另外取得授權/來源檔，這裡先列名稱供 alt text 使用）
+// 認證徽章（about.php 頁尾 6 項；名稱皆已確認）。原始圖檔狀態：
+// AICPA SOC／ISO 27001／Adobe 簽署認證（實為 Adobe Approved Trust List）
+// 三項已取得徽章圖檔；RFC 證書已取得，但掃描檔含證書編號，是否原樣放進
+// assets 待使用者決定（比照 credo.com.tw 律師證書字號不進 repo的原則，
+// 見 scaretimportplan-draft.md 第 7 節第 8 項）；PCI DSS、信託業務專業
+// 測驗合格證書 2 項圖檔尚未取得。
 export const CERTIFICATIONS: string[] = [
   "AICPA SOC",
   "PCI DSS",
