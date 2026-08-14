@@ -40,8 +40,9 @@ export const PARTNERS: { name: string; url?: string }[] = [
 // 主導覽選單（6 項已從截圖確認名稱、順序與對應網址）
 export const NAV: { label: string; href: string }[] = [
   { label: "關於SCA", href: "/about/" },
-  // 啟動退休人生對應 startup.php，已確認整頁是委任模組挑選表單（已串接外部
-  // 資料庫），本階段排除於靜態站範圍外，故無對應 Astro 頁面。
+  // 啟動退休人生對應 startup.php，已用原始碼確認整頁是委任契約簽署表單
+  // （意定監護／安養信託／自書遺囑，串接外部服務 Ragic），本階段排除於
+  // 靜態站範圍外，故無對應 Astro 頁面。
   // TODO：這個導覽項目要連去哪裡待決定（導向首頁／連到舊站真實表單／先隱藏），
   // 見 scaretimportplan-draft.md 第 7 節第 0 項。
   { label: "啟動退休人生", href: "/TODO-startup-backend/" },
