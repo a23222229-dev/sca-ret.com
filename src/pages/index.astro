@@ -103,7 +103,7 @@ const qas = [
     <div class="feature-grid">
       {securityPoints.map((point, i) => (
         <div class="feature-card">
-          <div class="feature-icon">{i + 1}</div>
+          <div class="feature-icon feature-icon--gold">{i + 1}</div>
           <h3>{point.title}</h3>
           <p>{point.body}</p>
         </div>
@@ -127,8 +127,9 @@ const qas = [
   <section class="features">
     <h2>服務特色</h2>
     <div class="feature-grid">
-      {features.map((f) => (
+      {features.map((f, i) => (
         <div class="feature-card">
+          <div class="feature-icon feature-icon--gold">{i + 1}</div>
           <h3>{f.title}</h3>
           <p class="feature-card__subtitle">{f.subtitle}</p>
           <ul>
@@ -155,21 +156,29 @@ const qas = [
 
 <style>
   h1, h2, h3 { color: var(--ink); }
-  section { margin-bottom: 3rem; }
+  section { margin-bottom: 4rem; }
 
-  .hero { text-align: center; }
-  .hero h1 { font-size: var(--text-3xl); margin-bottom: 0.5rem; }
+  .hero { text-align: center; padding-bottom: 0.5rem; }
+  .hero h1 {
+    font-size: var(--text-3xl);
+    margin-bottom: 0.75rem;
+    background: linear-gradient(120deg, var(--brand-deep), var(--brand));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
   .hero__sub { font-size: var(--text-lg); color: var(--ink-soft); }
 
   .banner {
-    background: var(--brand);
+    background: linear-gradient(135deg, var(--brand), var(--brand-deep));
     color: var(--on-brand);
     text-align: center;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
   }
-  .banner h2 { font-size: var(--text-2xl); margin: 0 0 0.25rem; color: var(--on-brand); }
-  .banner p { margin: 0; font-size: var(--text-base); }
+  .banner h2 { font-size: var(--text-2xl); margin: 0 0 0.35rem; color: var(--on-brand); }
+  .banner p { margin: 0; font-size: var(--text-base); opacity: 0.95; }
 
   .pain-points {
     display: grid;
@@ -179,9 +188,16 @@ const qas = [
   .pain-card {
     background: var(--surface);
     border: 1px solid var(--line);
+    border-top: 4px solid var(--brand);
     border-radius: var(--radius-md);
-    padding: 1.5rem;
+    padding: 1.75rem 1.5rem;
     text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .pain-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
   .pain-card p { color: var(--ink-soft); margin: 0 0 0.5rem; }
   .pain-card strong { font-size: var(--text-lg); }
@@ -200,12 +216,17 @@ const qas = [
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    padding: 1.5rem;
+    padding: 1.75rem;
     box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .feature-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
   }
   .feature-icon {
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     border-radius: 50%;
     background: var(--brand-mid);
     color: var(--on-brand);
@@ -213,7 +234,11 @@ const qas = [
     align-items: center;
     justify-content: center;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 1.1rem;
+  }
+  .feature-icon--gold {
+    background: var(--accent-gold);
+    color: var(--accent-gold-ink);
   }
   .feature-card h3 { font-size: var(--text-lg); margin: 0 0 0.5rem; }
   .feature-card__subtitle { color: var(--brand-deep); font-weight: 600; margin: 0 0 0.75rem; }
@@ -222,7 +247,7 @@ const qas = [
 
   .steps { text-align: center; }
   .steps h2 { font-size: var(--text-2xl); margin-bottom: 0.25rem; }
-  .steps__sub { color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .steps__sub { color: var(--ink-soft); margin-bottom: 1.75rem; }
   .steps__list {
     list-style: none;
     margin: 0;
@@ -236,15 +261,20 @@ const qas = [
     background: var(--surface);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
-    padding: 1rem;
+    padding: 1.1rem;
     display: flex;
     gap: 0.75rem;
     align-items: flex-start;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .steps__list li:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
   }
   .steps__num {
     flex-shrink: 0;
-    width: 2rem;
-    height: 2rem;
+    width: 2.1rem;
+    height: 2.1rem;
     border-radius: 50%;
     background: var(--brand);
     color: var(--on-brand);
@@ -252,10 +282,18 @@ const qas = [
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    font-size: var(--text-sm);
   }
 
-  .qa__item { margin-bottom: 1.5rem; }
-  .qa__q { font-weight: 700; margin-bottom: 0.25rem; }
+  .qa h2 { text-align: center; margin-bottom: 1.5rem; }
+  .qa__item {
+    margin-bottom: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.25rem 1.5rem;
+  }
+  .qa__q { font-weight: 700; margin-bottom: 0.4rem; color: var(--brand-deep); }
   .qa__a { color: var(--ink-soft); margin: 0; }
-  .qa__link { font-size: var(--text-sm); color: var(--ink-soft); }
+  .qa__link { font-size: var(--text-sm); color: var(--ink-soft); text-align: center; }
 </style>

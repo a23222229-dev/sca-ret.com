@@ -4,6 +4,7 @@ import { SITE_NAME, SITE_BRAND, NAV, COPYRIGHT, PARTNERS, CONTACT_EMAIL, LINE_OF
 
 const { title, description = SITE_NAME } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const currentPath = Astro.url.pathname;
 
 function resolveHref(href) {
   if (href.startsWith('http')) return href;
@@ -25,9 +26,21 @@ function resolveHref(href) {
         Sca <span class="brand__r">R</span>et.
       </a>
       <nav class="nav">
-        {NAV.map((item) => (
-          <a href={resolveHref(item.href)}>{item.label}</a>
-        ))}
+        {NAV.map((item) => {
+          const href = resolveHref(item.href);
+          const isExternal = item.href.startsWith('http');
+          const isActive = !isExternal && href === currentPath;
+          return (
+            <a
+              href={href}
+              class={isActive ? 'is-active' : ''}
+              target={isExternal ? '_blank' : undefined}
+              rel={isExternal ? 'noopener' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })}
       </nav>
     </div>
   </header>
@@ -38,6 +51,9 @@ function resolveHref(href) {
 
   <footer class="site-footer">
     <div class="site-footer__inner">
+      <a class="site-footer__brand" href={resolveHref('/')}>
+        Sca <span class="brand__r">R</span>et.
+      </a>
       <div class="site-footer__partners">
         {PARTNERS.map((p) => (
           p.url
@@ -74,11 +90,14 @@ function resolveHref(href) {
   .site-header {
     background: var(--surface);
     border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
   }
   .site-header__inner {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 1rem 1.5rem;
+    padding: 1.1rem 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,6 +110,10 @@ function resolveHref(href) {
     color: var(--brand);
     text-decoration: none;
     letter-spacing: 0.01em;
+    transition: opacity var(--transition);
+  }
+  .brand:hover {
+    opacity: 0.8;
   }
   .brand__r {
     display: inline-flex;
@@ -106,47 +129,70 @@ function resolveHref(href) {
   .nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.25rem;
+    gap: 0.25rem;
   }
   .nav a {
     color: var(--ink);
     text-decoration: none;
     font-size: var(--text-sm);
     font-weight: 600;
+    padding: 0.4rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color var(--transition), background-color var(--transition);
   }
   .nav a:hover {
     color: var(--brand-deep);
+    background: var(--paper);
+  }
+  .nav a.is-active {
+    color: var(--brand-deep);
+    background: var(--brand-light);
   }
 
   main {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
+    padding: 2.5rem 1.5rem 4rem;
   }
 
   .site-footer {
     background: var(--footer-bg);
     color: var(--on-dark);
     margin-top: 3rem;
+    border-top: 3px solid var(--brand);
   }
   .site-footer__inner {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 2rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     text-align: center;
+  }
+  .site-footer__brand {
+    display: inline-block;
+    font-size: var(--text-lg);
+    font-weight: 800;
+    color: var(--brand-mid);
+    text-decoration: none;
+    margin-bottom: 1.25rem;
   }
   .site-footer__partners {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
     flex-wrap: wrap;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   }
   .site-footer__partners a,
   .site-footer__partners span {
     color: var(--on-dark);
     font-size: var(--text-sm);
     text-decoration: none;
+    transition: color var(--transition);
+  }
+  .site-footer__partners a:hover {
+    color: var(--brand-mid);
   }
   .site-footer__contact {
     font-size: var(--text-sm);

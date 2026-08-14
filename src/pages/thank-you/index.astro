@@ -24,12 +24,13 @@ import Layout from '../../layouts/Layout.astro';
 
 <style>
   .banner {
-    background: var(--brand);
+    background: linear-gradient(135deg, var(--brand), var(--brand-deep));
     color: var(--on-brand);
     text-align: center;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2.5rem;
   }
   .banner h1 { margin: 0; font-size: var(--text-2xl); color: var(--on-brand); }
 
@@ -54,5 +55,11 @@ import Layout from '../../layouts/Layout.astro';
     font-weight: 700;
     padding: 0.9rem 2rem;
     border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .line-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
   }
 </style>

@@ -37,12 +37,13 @@ const mandala = [
 
 <style>
   .banner {
-    background: var(--brand);
+    background: linear-gradient(135deg, var(--brand), var(--brand-deep));
     color: var(--on-brand);
     text-align: center;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin-bottom: 2rem;
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    margin-bottom: 2.5rem;
   }
   .banner h1 { margin: 0; font-size: var(--text-2xl); color: var(--on-brand); }
 
@@ -56,6 +57,9 @@ const mandala = [
   .mandala__grid {
     border-collapse: collapse;
     margin: 0 auto;
+    box-shadow: var(--shadow-lg);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
   }
   .mandala__grid td {
     border: 2px solid var(--ink);
@@ -63,8 +67,14 @@ const mandala = [
     font-size: var(--text-lg);
     font-weight: 700;
     text-align: center;
+    background: var(--surface);
+    transition: background-color var(--transition);
   }
-  .mandala__center {
-    background: var(--paper);
+  .mandala__grid td:hover {
+    background: var(--brand-light);
+  }
+  .mandala__grid td.mandala__center {
+    background: var(--brand-mid);
+    color: var(--on-brand);
   }
 </style>

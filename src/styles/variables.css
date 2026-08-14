@@ -1,26 +1,40 @@
-/* sca-ret.com 設計 token（單一真實來源）— 草稿 v0.1
+/* sca-ret.com 設計 token（單一真實來源）— Phase 3 視覺定案 v0.2
  * 規範同 credo.com.tw：顏色一律在此定義（oklch 為準、hex 為 fallback），
  * 元件只用 var(--…)；字級一律 --text-* 階梯（最小 18px）；禁 px 硬編、禁 !important。
  *
- * 【TODO】以下 hex 是從使用者提供的頁面截圖目測估計，不是用色彩滴管精確取樣。
- * 正式套用前務必用原始設計檔或高解析度截圖重新取色核對，尤其橙色主色調。
+ * 三組品牌色彩取自使用者提供的多張頁面截圖交叉比對（Logo／橫幅／服務特色
+ * 圖示／login 六角徽章），確認彼此是三個不同色階、不是同一色的深淺變化：
+ *   --brand      主橙（Logo／橫幅／按鈕，全站用得最多）
+ *   --accent-gold  金黃（首頁「對於安全」「服務特色」圖示圓底，較黃較飽和）
+ *   --accent-brick 磚紅（login.php 六角形徽章，較深較偏紅棕）
+ * 仍是目測估計值，未用色彩滴管精確取樣；有原始設計檔或向量 Logo 後應重新核對。
  */
 :root {
-  /* 品牌與背景 */
-  --brand: #e39321;        /* 橙色主色（Logo／橫幅／按鈕），估計值待核對 */
-  --brand-deep: #a5610a;   /* 深橙：淺底上的橙色文字/連結（AA 對比），估計值待核對 */
-  --brand-mid: #eaa74a;    /* 淺橙 */
-  --brand-light: #f5cf9c;  /* 更淺橙（徽章邊框類） */
-  --paper: #f1efe3;        /* 暖米白底（首頁/關於頁背景），估計值待核對 */
+  /* 品牌主色 */
+  --brand: #e0821e;        /* 橙色主色（Logo／橫幅／按鈕） */
+  --brand-deep: #a5610a;   /* 深橙：淺底上的橙色文字/連結（AA 對比） */
+  --brand-mid: #eaa74a;    /* 淺橙（次要底色） */
+  --brand-light: #f5cf9c;  /* 更淺橙（邊框/底色點綴） */
+
+  /* 強調色（獨立色階，不是 --brand 的深淺變化） */
+  --accent-gold: #ecab1f;       /* 金黃：服務特色/安全性圖示圓底 */
+  --accent-gold-ink: #4a3510;   /* 金黃底上的深色圖示線條 */
+  --accent-brick: #b6552c;      /* 磚紅：login 六角形徽章底色 */
+  --accent-brick-border: #ecdcb8; /* 磚紅徽章的米色邊框 */
+
+  /* 背景與卡片 */
+  --paper: #f2efe3;        /* 暖米白底（全站背景） */
   --surface: #ffffff;      /* 卡片白 */
+
   /* 文字 */
   --ink: #262320;          /* 主文字（暖近黑） */
   --ink-soft: #5c564e;     /* 次要文字 */
   --on-brand: #ffffff;     /* 橙底上的白字（按鈕/橫幅標題） */
   --on-dark: #ded9d2;      /* 深底上的淺字（頁尾黑底） */
+
   /* 邊線與遮罩 */
   --line: #d8d2c6;
-  --footer-bg: #1a1a1a;    /* 頁尾深色底，估計值待核對 */
+  --footer-bg: #1a1a1a;    /* 頁尾深色底 */
 
   /* 字級量表（最小 18px；--text-base 為內文下限，沿用 credo.com.tw 階梯） */
   --text-xs: 1.125rem;   /* 18px */
@@ -39,15 +53,23 @@
   --radius-md: 12px;
   --radius-lg: 20px;
   --shadow: 0 4px 18px rgba(60, 52, 40, 0.12);
+  --shadow-lg: 0 12px 32px rgba(60, 52, 40, 0.16);
   --container: 1140px;
+  --transition: 160ms ease;
 }
 
 @supports (color: oklch(0.5 0.1 250)) {
   :root {
-    --brand: oklch(0.72 0.15 55);
+    --brand: oklch(0.68 0.16 48);
     --brand-deep: oklch(0.48 0.12 50);
     --brand-mid: oklch(0.79 0.11 60);
     --brand-light: oklch(0.87 0.08 65);
+
+    --accent-gold: oklch(0.78 0.15 75);
+    --accent-gold-ink: oklch(0.32 0.05 60);
+    --accent-brick: oklch(0.52 0.13 40);
+    --accent-brick-border: oklch(0.9 0.04 75);
+
     --paper: oklch(0.955 0.008 80);
     --surface: oklch(1 0 0);
     --ink: oklch(0.18 0.01 80);
@@ -57,5 +79,6 @@
     --line: oklch(0.87 0.02 80);
     --footer-bg: oklch(0.15 0 0);
     --shadow: 0 4px 18px oklch(0.3 0.02 80 / 0.12);
+    --shadow-lg: 0 12px 32px oklch(0.3 0.02 80 / 0.16);
   }
 }

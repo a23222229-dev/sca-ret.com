@@ -4,7 +4,7 @@ import { RETIREMENT_MODULES } from '../../lib/site.ts';
 ---
 <Layout title="會員專區" description="SCA 會員專區登入">
   <section class="login">
-    <form class="login__form" onsubmit="return false">
+    <form class="login__form login__card" onsubmit="return false">
       <label>
         Email
         <input type="email" placeholder="Email" disabled />
@@ -25,17 +25,26 @@ import { RETIREMENT_MODULES } from '../../lib/site.ts';
 
   <section class="badges">
     {RETIREMENT_MODULES.map((m) => (
-      <div class="badge">{m.name}</div>
+      <div class="badge">
+        <div class="badge__hex"><span>{m.name}</span></div>
+      </div>
     ))}
   </section>
 </Layout>
 
 <style>
-  .login { max-width: 420px; margin: 0 auto 3rem; text-align: center; }
+  .login { max-width: 420px; margin: 0 auto 4rem; text-align: center; }
+  .login__card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+  }
   .login__form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.1rem;
     text-align: left;
   }
   .login__form label {
@@ -47,10 +56,11 @@ import { RETIREMENT_MODULES } from '../../lib/site.ts';
   }
   .login__form input[type="email"],
   .login__form input[type="password"] {
-    padding: 0.6rem 0.75rem;
+    padding: 0.7rem 0.9rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
     font-size: var(--text-base);
+    background: var(--paper);
   }
   .login__remember label {
     flex-direction: row;
@@ -76,15 +86,32 @@ import { RETIREMENT_MODULES } from '../../lib/site.ts';
   .badges {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1.5rem;
+    gap: 2rem;
+    justify-items: center;
   }
-  .badge {
-    background: var(--brand-deep);
+  .badge__hex {
+    width: 220px;
+    height: 200px;
+    padding: 3px;
+    background: var(--accent-brick-border);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    transition: transform var(--transition);
+  }
+  .badge__hex:hover {
+    transform: translateY(-4px);
+  }
+  .badge__hex span {
+    flex: 1;
+    background: var(--accent-brick);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     color: var(--on-brand);
-    border-radius: var(--radius-lg);
-    padding: 2rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
     font-weight: 700;
     font-size: var(--text-base);
+    padding: 0 1.5rem;
   }
 </style>
