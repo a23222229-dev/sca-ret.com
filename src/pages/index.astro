@@ -253,9 +253,14 @@ const qas = [
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     text-align: left;
+  }
+  @media (max-width: 720px) {
+    .steps__list {
+      grid-template-columns: 1fr;
+    }
   }
   .steps__list li {
     background: var(--surface);
