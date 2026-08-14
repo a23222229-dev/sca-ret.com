@@ -1,0 +1,25 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { BUSINESS_NAME_LEGAL, BUSINESS_ID, CONTACT_EMAIL } from '../../lib/site.ts';
+---
+<Layout title="聯絡我們" description="聯絡 SCA">
+  <section class="contact">
+    <h1>聯絡我們</h1>
+    <dl>
+      <dt>公司名</dt>
+      <dd>{BUSINESS_NAME_LEGAL}</dd>
+      <dt>公司統編</dt>
+      <dd>{BUSINESS_ID}</dd>
+      <dt>聯絡信箱</dt>
+      <dd><a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a></dd>
+    </dl>
+  </section>
+</Layout>
+
+<style>
+  .contact { max-width: 480px; margin: 0 auto; text-align: center; }
+  .contact h1 { font-size: var(--text-3xl); margin-bottom: 2rem; }
+  dl { text-align: left; display: inline-block; }
+  dt { font-size: var(--text-sm); color: var(--ink-soft); margin-top: 1rem; }
+  dd { font-size: var(--text-lg); margin: 0.25rem 0 0; }
+</style>

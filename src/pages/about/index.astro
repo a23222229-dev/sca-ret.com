@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { CERTIFICATIONS } from '../../lib/site.ts';
+
+const paragraphs = [
+  '照顧您的人資源有限、被照顧者需求無限。SCA 為台灣首間協定意定監護公司，契約生效即確實執行退休/監護約定，服務啟動前可先請律師設定監護人，一鍵啟動退休人生。',
+  '執行團隊曾獲「玉山獎」最佳企業大獎，持續強化 IT 資安、地產管理、財務 FinTech，進化退休領域所需的 AI 工程。',
+  '引用國發會 2070 年人口中推估數據——台灣或許剩 1,581 萬人，呼籲「預先安排、及早準備」。',
+];
+---
+<Layout title="關於SCA" description="關於 SCA — 協助安排您的退休人生">
+  <section class="hero">
+    <h1>關於 SCA</h1>
+    <p class="hero__sub">協助安排您的退休人生</p>
+  </section>
+
+  <section class="body">
+    {paragraphs.map((p) => <p>{p}</p>)}
+  </section>
+
+  <section class="certs">
+    <h2>認證與資安標準</h2>
+    <div class="certs__grid">
+      {CERTIFICATIONS.map((name) => (
+        <span class="cert-badge">{name}</span>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .hero h1 { font-size: var(--text-3xl); margin-bottom: 0.5rem; }
+  .hero__sub { font-size: var(--text-lg); color: var(--ink-soft); }
+
+  .body p {
+    font-size: var(--text-base);
+    color: var(--ink-soft);
+    margin-bottom: 1.5rem;
+  }
+
+  .certs { margin-top: 3rem; text-align: center; }
+  .certs h2 { font-size: var(--text-xl); margin-bottom: 1.5rem; }
+  .certs__grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+  .cert-badge {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 0.5rem 1.25rem;
+    font-size: var(--text-sm);
+    color: var(--ink);
+  }
+</style>

@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import {
+  PLAN_TIERS,
+  CONTRACT_PLAN,
+  SECRETARY_SERVICE,
+  GUARDIANSHIP_TIERS,
+  GUARDIANSHIP_PLAN,
+} from '../../lib/pricing.ts';
+
+function mark(v) {
+  return v ? '✓' : '—';
+}
+---
+<Layout title="收費方案" description="SCA 收費方案總覽">
+  <section class="hero">
+    <h1>收費方案</h1>
+  </section>
+
+  <section class="table-block">
+    <h2>協定意定監護／自書遺囑／安養信託</h2>
+    <p class="note">{CONTRACT_PLAN.note}</p>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            {PLAN_TIERS.map((t) => <th>{t}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>定價</td>
+            {CONTRACT_PLAN.pricing.map((p) => <td>{p === null ? '—' : p.toLocaleString()}</td>)}
+          </tr>
+          {CONTRACT_PLAN.items.map((item) => (
+            <tr>
+              <td>{item.label}</td>
+              {item.included.map((v) => <td>{mark(v)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="table-block">
+    <h2>線上秘書服務</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            {PLAN_TIERS.map((t) => <th>{t}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {SECRETARY_SERVICE.items.map((item) => (
+            <tr>
+              <td>{item.label}（{item.note}）</td>
+              {item.included.map((v) => <td>{mark(v)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="table-block">
+    <h2>退休/監護項目</h2>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>項目</th>
+            {GUARDIANSHIP_TIERS.map((t) => <th>{t}</th>)}
+          </tr>
+        </thead>
+        <tbody>
+          {GUARDIANSHIP_PLAN.items.map((item) => (
+            <tr>
+              <td>{item.label}</td>
+              {item.included.map((v) => <td>{mark(v)}</td>)}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero { text-align: center; margin-bottom: 2rem; }
+  .hero h1 { font-size: var(--text-3xl); }
+
+  .table-block { margin-bottom: 3rem; }
+  .table-block h2 { font-size: var(--text-xl); margin-bottom: 0.25rem; }
+  .note { color: var(--ink-soft); font-size: var(--text-sm); margin-bottom: 1rem; }
+
+  .table-scroll { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--text-sm);
+    white-space: nowrap;
+  }
+  th { background: var(--brand); color: var(--on-brand); }
+  td:first-child, th:first-child { white-space: normal; min-width: 200px; }
+</style>

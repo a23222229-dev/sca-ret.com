@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+const mandala = [
+  ['媽媽', '哥哥', '好友阿魯'],
+  ['爸爸', '我', '弟弟'],
+  ['閨蜜羊羊', '姐姐', '姪子'],
+];
+---
+<Layout title="合作方案" description="意定監護 SOMEBODY 曼陀羅計畫">
+  <section class="banner">
+    <h1>退而不休，加入我們？</h1>
+  </section>
+
+  <section class="intro">
+    <p>假設我們的設定能夠解決您的問題，何不參與我們的曼陀羅計畫，在九宮格內也許都是會影響您精彩退休人生的SOMEBODY，協助他們完成退休監護委任，將使您無憂無慮享受人生。</p>
+    <p>完成它將成為我們的VIP會員。</p>
+  </section>
+
+  <section class="mandala">
+    <h2>意定監護<br /><span class="mandala__en">SOMEBODY</span></h2>
+    <table class="mandala__grid">
+      <tbody>
+        {mandala.map((row) => (
+          <tr>
+            {row.map((cell) => (
+              cell === '我'
+                ? <td class="mandala__center">{cell}</td>
+                : <td>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </section>
+</Layout>
+
+<style>
+  .banner {
+    background: var(--brand);
+    color: var(--on-brand);
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    margin-bottom: 2rem;
+  }
+  .banner h1 { margin: 0; font-size: var(--text-2xl); color: var(--on-brand); }
+
+  .intro { text-align: center; max-width: 640px; margin: 0 auto 2.5rem; }
+  .intro p { color: var(--ink-soft); }
+
+  .mandala { text-align: center; }
+  .mandala h2 { font-size: var(--text-2xl); margin-bottom: 1.5rem; }
+  .mandala__en { font-size: var(--text-lg); font-weight: 400; color: var(--ink-soft); }
+
+  .mandala__grid {
+    border-collapse: collapse;
+    margin: 0 auto;
+  }
+  .mandala__grid td {
+    border: 2px solid var(--ink);
+    padding: 1.5rem 2rem;
+    font-size: var(--text-lg);
+    font-weight: 700;
+    text-align: center;
+  }
+  .mandala__center {
+    background: var(--paper);
+  }
+</style>

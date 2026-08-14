@@ -1,0 +1,261 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SITE_TAGLINE } from '../lib/site.ts';
+
+const securityPoints = [
+  {
+    title: '採用上市上櫃企業資安電子認證',
+    body: '我們採用和上市櫃企業相同的電子簽署及資料管理措施，安全性符合ISO 27001資安認證及電子簽章法。每份文件均有數位壓印，保證不備竄改。',
+  },
+  {
+    title: '合法執業律師 法院公證制定合約',
+    body: '執業律師＋法院公證制定意定監護合約，讓您安心又保密，我們公司帶您一站式跑完所有流程。',
+  },
+  {
+    title: '管理合約不涉及財產買賣，金流設定信託專戶',
+    body: 'SCA公司不需保留客戶任何金融證件及土地謄本，完全保護您的資產。金流信託設計，只要付極少費用便能安全安排退休生活。',
+  },
+];
+
+const steps = [
+  'SCA公司與您探詢監護契約及委任項目',
+  '執業律師與你協定監護契約',
+  '您及受任人至公證人公證（完成期限以三個月為限）',
+  '公證人書面通知法院才始生效力（於7日內）',
+  '只要尚未進入監護，都能變更及取消委任',
+  '委任項目交由 SCA團隊',
+];
+
+const features = [
+  {
+    title: '安全迴路機制',
+    subtitle: '法源有依據，可由他方法務協同訂約或撤銷',
+    items: [
+      '不怕養老金所託非人，成為身故爭產前哨站',
+      '受任人或公司消滅，契約皆有遞補機制；但若為信託行為則不因受任人或公司消滅而結束。',
+      '多位監護人，按其所長分別執行職務',
+    ],
+  },
+  {
+    title: '收費全透明',
+    subtitle: '監護契約制定已含律師及公證費用',
+    items: [
+      '退休管家服務-選多少付多少，除了託付，還不用多付。',
+      '開通繳費服務即能享受專款代收代付，讓您不用跑銀行。',
+      '獨立第三方專業契約制定，無人情紅包問題。',
+    ],
+  },
+  {
+    title: '退休整合',
+    subtitle: '預定執行機構，減少監護人(自然人)負擔',
+    items: [
+      '開通SCA小祕書服務，讓您退休像在家一樣輕鬆。',
+      '串接執行機構，讓您查看多重資產安心又有保障。',
+      '退休費用繳交及付款，會有自動提醒功能讓你不再遲付。',
+    ],
+  },
+];
+
+const qas = [
+  {
+    q: '制定監護契約的要費用嗎？',
+    a: '法務部其實有免費合約範本可自行運用（www.moj.gov.tw）。SCA 公司收費來自於一站式自動化辦理退休監護契約，有律師和公證人及執行公司多重機制保護。跟商標註冊及房屋買賣一樣，當然可以自己辦，但也許會有遺漏。',
+  },
+  {
+    q: '我能去找律師辦理嗎？',
+    a: '當然可以！單純律師事務所收費，也許會和①我們 SCA 公司②律師/法務③公證人④管理系統加起來的收費相近。',
+  },
+  {
+    q: '為何以 SCA 公司為受任人而不是事務所？',
+    a: '重點在——是誰要接任長期的退休監護的委任工作！SCA 公司是以不動產雲端管理系統＋退休安全保護計畫，整合後才能接受退休人士託付的「長期性」管理方案。但一般事務所只能單純處理單一事件，所以功能性並不相同。',
+  },
+];
+---
+<Layout title="首頁" description={SITE_TAGLINE}>
+  <section class="hero">
+    <h1>{SITE_TAGLINE}</h1>
+    <p class="hero__sub">開放給退休人士的第一個合約</p>
+  </section>
+
+  <section class="banner">
+    <h2>SCA退休機制</h2>
+    <p>請SCA®會員一鍵鎖定退休大小事</p>
+  </section>
+
+  <section class="pain-points">
+    <div class="pain-card">
+      <p>因為身體狀況!退休變成被照顧</p>
+      <strong>開始制定意定監護契約</strong>
+    </div>
+    <div class="pain-card">
+      <p>退休時不想被鎖事纏身</p>
+      <strong>三種退休模組，讓您挑選</strong>
+    </div>
+  </section>
+
+  <section class="intro">
+    <h2>台灣首創退休/監護管家服務</h2>
+    <p>一個能動退休人生</p>
+  </section>
+
+  <section class="security">
+    <h2>對於安全，我們從不吝嗇</h2>
+    <div class="feature-grid">
+      {securityPoints.map((point, i) => (
+        <div class="feature-card">
+          <div class="feature-icon">{i + 1}</div>
+          <h3>{point.title}</h3>
+          <p>{point.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="steps">
+    <h2>意定契約/退休管家－辦掃流程</h2>
+    <p class="steps__sub">一站式搞定退休大小事</p>
+    <ol class="steps__list">
+      {steps.map((step, i) => (
+        <li>
+          <span class="steps__num">{i + 1}</span>
+          <span>{step}</span>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="features">
+    <h2>服務特色</h2>
+    <div class="feature-grid">
+      {features.map((f) => (
+        <div class="feature-card">
+          <h3>{f.title}</h3>
+          <p class="feature-card__subtitle">{f.subtitle}</p>
+          <ul>
+            {f.items.map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="qa">
+    <h2>Q &amp; A</h2>
+    {qas.map((item) => (
+      <div class="qa__item">
+        <p class="qa__q">Q：{item.q}</p>
+        <p class="qa__a">A：{item.a}</p>
+      </div>
+    ))}
+    <p class="qa__link">
+      參考連結：<a href="https://www.moj.gov.tw/2204/2528/2529/2530/2533/12401/" target="_blank" rel="noopener">法務部意定監護契約範本（www.moj.gov.tw）</a>
+    </p>
+  </section>
+</Layout>
+
+<style>
+  h1, h2, h3 { color: var(--ink); }
+  section { margin-bottom: 3rem; }
+
+  .hero { text-align: center; }
+  .hero h1 { font-size: var(--text-3xl); margin-bottom: 0.5rem; }
+  .hero__sub { font-size: var(--text-lg); color: var(--ink-soft); }
+
+  .banner {
+    background: var(--brand);
+    color: var(--on-brand);
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+  }
+  .banner h2 { font-size: var(--text-2xl); margin: 0 0 0.25rem; color: var(--on-brand); }
+  .banner p { margin: 0; font-size: var(--text-base); }
+
+  .pain-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .pain-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .pain-card p { color: var(--ink-soft); margin: 0 0 0.5rem; }
+  .pain-card strong { font-size: var(--text-lg); }
+
+  .intro { text-align: center; }
+  .intro h2 { font-size: var(--text-2xl); margin-bottom: 0.25rem; }
+  .intro p { color: var(--ink-soft); }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+  }
+  .feature-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--brand-mid);
+    color: var(--on-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .feature-card h3 { font-size: var(--text-lg); margin: 0 0 0.5rem; }
+  .feature-card__subtitle { color: var(--brand-deep); font-weight: 600; margin: 0 0 0.75rem; }
+  .feature-card ul { margin: 0; padding-left: 1.2rem; }
+  .feature-card li { margin-bottom: 0.5rem; color: var(--ink-soft); }
+
+  .steps { text-align: center; }
+  .steps h2 { font-size: var(--text-2xl); margin-bottom: 0.25rem; }
+  .steps__sub { color: var(--ink-soft); margin-bottom: 1.5rem; }
+  .steps__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    text-align: left;
+  }
+  .steps__list li {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .steps__num {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--brand);
+    color: var(--on-brand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  .qa__item { margin-bottom: 1.5rem; }
+  .qa__q { font-weight: 700; margin-bottom: 0.25rem; }
+  .qa__a { color: var(--ink-soft); margin: 0; }
+  .qa__link { font-size: var(--text-sm); color: var(--ink-soft); }
+</style>
