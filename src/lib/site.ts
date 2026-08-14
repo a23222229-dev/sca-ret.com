@@ -61,12 +61,12 @@ export const RETIREMENT_MODULES: { name: string }[] = [
   { name: "意定監護及防詐機制" },
 ];
 
-// 認證徽章（about.php 頁尾 6 項；名稱皆已確認）。原始圖檔狀態：
-// AICPA SOC／ISO 27001／Adobe 簽署認證（實為 Adobe Approved Trust List）
-// 三項已取得徽章圖檔；RFC 證書已取得，但掃描檔含證書編號，是否原樣放進
-// assets 待使用者決定（比照 credo.com.tw 律師證書字號不進 repo的原則，
-// 見 scaretimportplan-draft.md 第 7 節第 8 項）；PCI DSS、信託業務專業
-// 測驗合格證書 2 項圖檔尚未取得。
+// 認證徽章（about.php 頁尾 6 項；名稱皆已確認，全部 6 項原始圖檔皆已取得）。
+// AICPA SOC／PCI DSS／ISO 27001／Adobe 簽署認證（實為 Adobe Approved Trust
+// List）4 項是通用樣式徽章，可直接收進 assets。RFC 證書、信託業務專業測驗
+// 合格證書 2 項是含證書編號的個人證書掃描檔，是否原樣放進 assets 待使用者
+// 決定（比照 credo.com.tw 律師證書字號不進 repo 的原則，見
+// scaretimportplan-draft.md 第 7 節第 8 項）。
 export const CERTIFICATIONS: string[] = [
   "AICPA SOC",
   "PCI DSS",

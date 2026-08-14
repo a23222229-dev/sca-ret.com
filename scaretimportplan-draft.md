@@ -355,8 +355,8 @@
 6. **sca-ret.com 現有主機與 DNS 由誰管理？** 切換前務必確認 MX/SPF（信箱設定）不會被誤動，需先盤點現有 DNS 記錄逐條核對。
 7. ~~現有網站是用什麼系統做的？~~ **已解決**——取得 `startup.php`／`startup2.php` 原始碼後確認：**不是 WordPress 或其他 CMS**，是純 PHP `include`（`head.php`／`menu.php`／`footer.php` 拼頁首/選單/頁尾）套用 TEMPLATED.co 的免費模板「Solarize」，前端用 jQuery，互動表單部分串接外部服務 **Ragic**（無程式碼資料庫/表單平台）收資料，不是自建後端。
 8. **品牌識別素材是否已有現成檔案？** 3 個夥伴品牌（CREDO／富盟物業／Zi-Dun）的 logo 圖檔已取得，見 4.2 節備註。Sca Ret. 自身 Logo 也已取得：是純文字商標「Sca Ⓡet.」（圓圈框住的 R，不是 ® 註冊商標符號，是造字設計的一部分），橘色系粗體圓角字體，**沒有吉祥物插畫**——先前文件誤植「含吉祥物插畫」已更正，那張拼圖插畫是另一張獨立的風格參考圖，不是 Logo 本身的一部分。**已確認：沒有另外的色票檔案**，只有 Logo 圖檔本身可作為取色來源——Phase 3 設計階段要從 Logo 截圖或原始檔目測/取色，沒有更精確的色票文件可查。
-   - **6 項認證徽章**：已取得其中 4 項原始檔——**AICPA SOC**（藍色圓形徽章，SOC for Service Organizations）、**Adobe 簽署認證**（實為「ADOBE Approved Trust List」電子簽署信任清單認證標章）、**RFC 證書**（Registered Financial Consultant，IARFC 國際認證財務顧問師公會核發的正式證書掃描檔，含證書編號）、**ISO 27001**（藍色圓形徽章，Information Security Management Certified）。剩餘 **PCI DSS**、**信託業務專業測驗合格證書** 2 項使用者稍後會補傳。
-   - ⚠️ **RFC 證書含證書編號（掃描檔上可見），比照第 8 節風險提示「証書字號 / 個資類欄位比照 credo 處理」的原則**：credo.com.tw 曾因用戶要求，律師證書字號不寫入 repo。這張 RFC 證書掃描檔是否要原樣放進 `assets`（含可辨識的證書編號），還是只用來確認徽章樣式、實際掃描檔不進 repo，需要使用者決定；本文件目前刻意不轉寫證書編號內容。
+   - **6 項認證徽章：全數已取得原始檔**——**AICPA SOC**（藍色圓形徽章，SOC for Service Organizations）、**PCI DSS**（青綠色 PCI DSS Compliant 徽章）、**Adobe 簽署認證**（實為「ADOBE Approved Trust List」電子簽署信任清單認證標章）、**ISO 27001**（藍色圓形徽章，Information Security Management Certified）4 項是通用樣式徽章，無個資疑慮，可直接收進 `assets`。**RFC 證書**與**信託業務專業測驗合格證書**這 2 項則是掃描檔，含可辨識的證書編號（分別由 IARFC、中華民國信託業商業同業公會核發），信託證書掃描檔上另外隱約可見姓名/身分證欄位痕跡。
+   - ⚠️ **RFC 證書、信託業務專業測驗合格證書皆含證書編號，比照第 8 節風險提示「証書字號 / 個資類欄位比照 credo 處理」的原則**：credo.com.tw 曾因用戶要求，律師證書字號不寫入 repo。這 2 張證書掃描檔是否要原樣放進 `assets`（含可辨識的證書編號/個資欄位），還是只用來確認徽章樣式、實際掃描檔不進 repo，需要使用者決定；本文件目前刻意不轉寫兩張證書的編號內容。
 9. ~~新站上線前是否要暫時鎖收錄？~~ **已解決：不鎖收錄**——使用者確認新站上線後維持正常收錄，不套用 credo 的 `INSIGHTS_CRAWLABLE` 排除機制。
 
 ---
@@ -373,7 +373,7 @@
 
 ## 9. 下一步行動
 
-- [ ] 取得剩餘 2 項認證徽章圖檔（PCI DSS、信託業務專業測驗合格證書；AICPA SOC、Adobe、RFC、ISO 27001 已取得，見第 7 節第 8 項）
+- [ ] ⚠️ 決定 RFC 證書、信託業務專業測驗合格證書這 2 張含證書編號的掃描檔要不要原樣放進 repo（其餘品牌素材皆已備齊，見第 7 節第 8 項）
 - [ ] 盤點現有 DNS／MX 紀錄，切換前存檔備查
 - [ ] 決定內容治理客製範圍（是否沿用去 AI 味守門引擎、是否需要 taxonomy 對照表）
 - [ ] 後端整合規劃：`startup.php`、`startup2.php` 兩頁排除於靜態站之外，各自串接 Ragic 的不同表單（`forms3`／`ragicsales-order-management`），規劃時需盤點這兩張表的介接方式（Ragic API／資料表結構等），不是從零建置
