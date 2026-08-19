@@ -97,7 +97,24 @@ function mark(v) {
   .table-block h2 { font-size: var(--text-xl); margin-bottom: 0.25rem; }
   .note { color: var(--ink-soft); font-size: var(--text-sm); margin-bottom: 1rem; }
 
-  .table-scroll { overflow-x: auto; }
+  .table-scroll {
+    overflow-x: auto;
+    position: relative;
+  }
+  @media (max-width: 720px) {
+    .table-scroll {
+      -webkit-mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent 100%);
+      mask-image: linear-gradient(to right, black calc(100% - 2rem), transparent 100%);
+    }
+    .table-block::after {
+      content: '← 左右滑動可看完整表格 →';
+      display: block;
+      font-size: var(--text-xs);
+      color: var(--ink-soft);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+  }
   table {
     width: 100%;
     border-collapse: collapse;

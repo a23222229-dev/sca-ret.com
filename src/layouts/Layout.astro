@@ -25,6 +25,14 @@ function resolveHref(href) {
       <a class="brand" href={resolveHref('/')}>
         Sca <span class="brand__r">R</span>et.
       </a>
+
+      <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox" />
+      <label for="nav-toggle" class="nav-toggle-label" aria-label="開啟選單">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
       <nav class="nav">
         {NAV.map((item) => {
           const href = resolveHref(item.href);
@@ -147,6 +155,77 @@ function resolveHref(href) {
   .nav a.is-active {
     color: var(--brand-deep);
     background: var(--brand-light);
+  }
+
+  /* 手機版漢堡選單：純 CSS checkbox hack，桌面版預設隱藏 */
+  .nav-toggle-checkbox {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .nav-toggle-label {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 2.5rem;
+    height: 2.5rem;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+  }
+  .nav-toggle-label span {
+    display: block;
+    height: 2px;
+    background: var(--ink);
+    border-radius: 1px;
+    transition: transform var(--transition), opacity var(--transition);
+  }
+  .nav-toggle-checkbox:focus-visible ~ .nav-toggle-label {
+    outline: 2px solid var(--brand-deep);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 780px) {
+    .nav-toggle-label {
+      display: flex;
+    }
+    .nav {
+      display: none;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--surface);
+      border-top: 1px solid var(--line);
+      box-shadow: var(--shadow-lg);
+      padding: 0.75rem 1.5rem;
+    }
+    .nav a {
+      padding: 0.85rem 0.5rem;
+      border-radius: 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .nav a:last-child {
+      border-bottom: none;
+    }
+    .nav-toggle-checkbox:checked ~ .nav {
+      display: flex;
+    }
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle-checkbox:checked ~ .nav-toggle-label span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
   }
 
   main {
