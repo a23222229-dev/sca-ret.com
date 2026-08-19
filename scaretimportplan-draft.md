@@ -336,7 +336,7 @@
 - [ ] **內鏈規則**：Markdown 文章內鏈用根路徑語法 `[x](/path/)`，禁 raw `<a>/<img>`。
 - [ ] **Base URL**：若新站部署在子路徑，`.astro` 內部連結一律加 `import.meta.env.BASE_URL` 前綴。
 - [ ] **內容守門客製**：若沿用去 AI 味引擎，依 sca-ret 產業術語（信託、意定監護等）調整 `SITE_ERROR_TELLS`／`ALLOW` 清單。
-- [x] **build 前置檢查**：`npm run build` 內建 `check:design` + `check:content`（`scripts/check-design.mjs`／`scripts/check-content.mjs`），已用臨時測試違規驗證兩支腳本抓得到、且真的會擋下 build。CI 尚未設定（本階段還沒有 CI／GitHub Actions），之後上 CI 時記得同步接上這兩支腳本。
+- [x] **build 前置檢查**：`npm run build` 內建 `check:design` + `check:content`（`scripts/check-design.mjs`／`scripts/check-content.mjs`），已用臨時測試違規驗證兩支腳本抓得到、且真的會擋下 build。已補上 `.github/workflows/deploy.yml`，CI 跑 `npm ci && npm run build` 時會自動觸發 prebuild hook、同步擋下不合規內容，不需要額外設定。
 
 ---
 

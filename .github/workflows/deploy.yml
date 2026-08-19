@@ -1,0 +1,62 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 同時間只跑一份部署，避免兩次 push competing 蓋掉彼此
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # 網域確定後，到 repo Settings → Secrets and variables → Actions → Variables
+      # 新增 CUSTOM_DOMAIN=sca-ret.com，這裡會自動寫 CNAME、改用根路徑部署。
+      # 沒設定的話，就照 astro.config.mjs 的預設值部署到
+      # https://<owner>.github.io/<repo>/ 這個 GitHub Pages 專案頁網址。
+      - name: Configure custom domain
+        if: vars.CUSTOM_DOMAIN != ''
+        run: |
+          echo "${{ vars.CUSTOM_DOMAIN }}" > public/CNAME
+          echo "BASE_PATH=/" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://${{ vars.CUSTOM_DOMAIN }}" >> "$GITHUB_ENV"
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
